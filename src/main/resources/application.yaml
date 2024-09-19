@@ -5,3 +5,9 @@ spring:
 
 server:
   port: 9050
+
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true

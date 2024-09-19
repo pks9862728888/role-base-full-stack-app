@@ -3,7 +3,7 @@ spring:
     name:
       role-base-full-stack-app
   datasource:
-    url: jdbc:mysql://localhost:3307/mysql-rbac
+    url: jdbc:mysql://localhost:3307/mysqlrbac
     username: root
     password: testpw
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -11,7 +11,7 @@ spring:
     show-sql: true
     properties:
       hibernate:
-        default_schema: test
+        default_schema: core
         dialect: org.hibernate.dialect.MySQL8Dialect
     hibernate:
       ddl-auto: none
