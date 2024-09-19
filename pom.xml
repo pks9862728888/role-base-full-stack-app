@@ -18,13 +18,16 @@
         <license/>
     </licenses>
     <developers>
-        <developer/>
+        <developer>
+            <name>pks9862728888</name>
+            <email>pks9862728888@gmail.com</email>
+        </developer>
     </developers>
     <scm>
-        <connection/>
-        <developerConnection/>
-        <tag/>
-        <url/>
+        <connection>scm:git@github.com:pks9862728888/role-based-full-stack-app.git</connection>
+        <developerConnection>git:git@github.com:pks9862728888/role-based-full-stack-app.git</developerConnection>
+        <tag>HEAD</tag>
+        <url>https://github.com/pks9862728888/role-based-full-stack-app</url>
     </scm>
     <properties>
         <java.version>17</java.version>
