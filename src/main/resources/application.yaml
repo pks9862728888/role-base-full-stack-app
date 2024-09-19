@@ -1,0 +1,7 @@
+spring:
+  application:
+    name:
+      role-base-full-stack-app
+
+server:
+  port: 9050
