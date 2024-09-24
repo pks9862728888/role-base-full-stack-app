@@ -1,4 +1,4 @@
-<form>
+<form formGroup="loginForm">
   <fieldset>
     <legend>Login</legend>
     <div class="form-field">
@@ -9,6 +9,8 @@
       <label>Password:</label>
       <input name="password" formControlName="password" type="password"/>
     </div>
-
+    <div class="form-buttons">
+      <button (click)="login()" class="button button-primary">Login</button>
+    </div>
   </fieldset>
 </form>
