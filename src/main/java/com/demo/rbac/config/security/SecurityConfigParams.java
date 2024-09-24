@@ -11,5 +11,5 @@ import org.springframework.context.annotation.Configuration;
 @ConfigurationProperties(prefix = "security.jwt")
 public class SecurityConfigParams {
     private String secretKey;
-    private long expirationTime;
+    private long tokenExpiryMin;
 }

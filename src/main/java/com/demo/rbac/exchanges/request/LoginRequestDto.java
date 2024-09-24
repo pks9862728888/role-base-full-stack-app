@@ -8,9 +8,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString(exclude = "password")
-public class UserRegistrationRequestDto {
-    @NotNull
-    private String email;
+public class LoginRequestDto {
     @NotNull
     private String username;
     @NotNull

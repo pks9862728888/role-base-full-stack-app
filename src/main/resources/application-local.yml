@@ -18,5 +18,5 @@ spring:
 
 security:
   jwt:
-    secretKey: superSecretKey
-    expirationTime: 3600000
+    secretKey: superSecretKey#@somerandomhash12321@123
+    tokenExpiryMin: 3600000
