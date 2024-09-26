@@ -3,6 +3,7 @@ package com.demo.rbac.config.security.filters;
 
 import com.demo.rbac.services.auth.JwtUtilsService;
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jws;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -21,11 +22,12 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import java.io.IOException;
 import java.util.Collections;
 
+import static com.demo.rbac.services.auth.JwtUtilsService.BEARER;
+
 @Slf4j
 @Component
 @RequiredArgsConstructor
 public class JwtAuthorizationFilter extends OncePerRequestFilter {
-    public static final String BEARER = "Bearer";
     private final JwtUtilsService jwtUtilsService;
 
     private static boolean isBearerToken(String authorizationToken) {
@@ -44,7 +46,7 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
             return;
         }
         if (isBearerToken(authorizationHeader)) {
-            String bearerToken = extractBearerToken(authorizationHeader);
+            String bearerToken = jwtUtilsService.extractBearerToken(authorizationHeader);
             validateBearerTokenNSetAuthenticatedPrincipal(bearerToken, res);
         } else {
             log.info("Not a bearer token!");
@@ -55,11 +57,11 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
         }
     }
 
-    private void validateBearerTokenNSetAuthenticatedPrincipal(
-            String bearerToken, HttpServletResponse res) {
+    private void validateBearerTokenNSetAuthenticatedPrincipal(String jwt, HttpServletResponse res) {
         try {
-            Claims claims = jwtUtilsService.resolveClaims(bearerToken);
-            if (jwtUtilsService.isTokenValid(claims)) {
+            Jws<Claims> parsedJwt = jwtUtilsService.parseToken(jwt);
+            if (jwtUtilsService.isTokenValid(parsedJwt)) {
+                Claims claims = parsedJwt.getPayload();
                 String username = claims.getSubject();
                 Authentication authentication = new UsernamePasswordAuthenticationToken(
                         username, StringUtils.EMPTY, Collections.emptyList());
@@ -70,10 +72,7 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
         } catch (Exception e) {
             e.printStackTrace();
             log.error("Exception while validating bearer token: {}", e.toString());
+            res.setStatus(HttpStatus.UNAUTHORIZED.value());
         }
-    }
-
-    private String extractBearerToken(String authorizationToken) {
-        return StringUtils.substringAfter(authorizationToken, BEARER).trim();
     }
 }
