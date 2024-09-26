@@ -1,5 +1,6 @@
-package com.demo.rbac.entities;
+package com.demo.rbac.entities.users;
 
+import com.demo.rbac.entities.Audit;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.MapsId;

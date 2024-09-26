@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 
 @Data
 @Entity
-public class Project {
+public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

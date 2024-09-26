@@ -1,9 +1,9 @@
 package com.demo.rbac.repositories;
 
-import com.demo.rbac.entities.users.UserDetails;
+import com.demo.rbac.entities.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserDetailsRepository extends JpaRepository<UserDetails, Long> {
+public interface ProductRepository extends JpaRepository<Product, Long> {
 }

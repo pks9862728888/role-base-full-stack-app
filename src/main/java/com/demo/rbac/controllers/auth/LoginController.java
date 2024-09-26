@@ -1,6 +1,6 @@
 package com.demo.rbac.controllers.auth;
 
-import com.demo.rbac.entities.User;
+import com.demo.rbac.entities.users.User;
 import com.demo.rbac.exchanges.request.LoginRequestDto;
 import com.demo.rbac.exchanges.response.GenericResponseDto;
 import com.demo.rbac.services.UserService;

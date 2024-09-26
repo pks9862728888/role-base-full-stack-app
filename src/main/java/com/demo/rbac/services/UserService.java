@@ -1,6 +1,6 @@
 package com.demo.rbac.services;
 
-import com.demo.rbac.entities.User;
+import com.demo.rbac.entities.users.User;
 import com.demo.rbac.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

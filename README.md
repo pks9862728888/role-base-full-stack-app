@@ -23,5 +23,5 @@ mvn liquibase:rollback -Dliquibase.rollbackTag=TAG -Pliquibase -DLIQUIBASE_DB_PA
 
 ### To debug liquibase script by dry run
 ```shell
-mvn liquibase:updateSQL -DLIQUIBASE_DB_PASSWORD=testpw -DLIQUIBASE_DB_URL=jdbc:mysql://localhost:3307/mysqlrbac -DLIQUIBASE_DB_USERNAME=root -DLIQUIBASE_DEFAULT_SCHEMA=mysqlrbac
+mvn liquibase:updateSQL -Pliquibase -DLIQUIBASE_DB_PASSWORD=testpw -DLIQUIBASE_DB_URL=jdbc:mysql://localhost:3307/mysqlrbac -DLIQUIBASE_DB_USERNAME=root -DLIQUIBASE_DEFAULT_SCHEMA=mysqlrbac
 ```

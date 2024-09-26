@@ -1,6 +1,7 @@
 package com.demo.rbac.config.security.filters;
 
 
+import com.demo.rbac.enums.Role;
 import com.demo.rbac.services.auth.JwtUtilsService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
@@ -15,14 +16,17 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 import java.util.Collections;
+import java.util.List;
 
 import static com.demo.rbac.services.auth.JwtUtilsService.BEARER;
+import static com.demo.rbac.services.auth.JwtUtilsService.ROLES;
 
 @Slf4j
 @Component
@@ -57,6 +61,16 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
         }
     }
 
+    private static List<? extends GrantedAuthority> extractAuthorities(Claims claims) {
+        if (!claims.containsKey(ROLES)) {
+            return Collections.emptyList();
+        }
+        return ((List<String>) claims.get(ROLES))
+                .stream()
+                .map(Role::valueOf)
+                .toList();
+    }
+
     private void validateBearerTokenNSetAuthenticatedPrincipal(String jwt, HttpServletResponse res) {
         try {
             Jws<Claims> parsedJwt = jwtUtilsService.parseToken(jwt);
@@ -64,7 +78,7 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
                 Claims claims = parsedJwt.getPayload();
                 String username = claims.getSubject();
                 Authentication authentication = new UsernamePasswordAuthenticationToken(
-                        username, StringUtils.EMPTY, Collections.emptyList());
+                        username, StringUtils.EMPTY, extractAuthorities(claims));
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             } else {
                 res.setStatus(HttpStatus.UNAUTHORIZED.value());

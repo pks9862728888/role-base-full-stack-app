@@ -19,14 +19,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class UserRegistrationController extends GenericExceptionHandler {
     private final UserRegistrationService userRegistrationService;
 
-    @PostMapping("/user")
+    @PostMapping("/buyer")
     public ResponseEntity<UserRegistrationResponseDto> registerUser(
             @Valid @RequestBody UserRegistrationRequestDto reqDto) {
         UserRegistrationResponseDto responseDto = new UserRegistrationResponseDto();
         boolean registrationSuccess = false;
         if (!(userRegistrationService.emailAlreadyRegistered(reqDto, responseDto) ||
                 userRegistrationService.usernameTaken(reqDto, responseDto))) {
-            registrationSuccess = userRegistrationService.registerUser(reqDto);
+            registrationSuccess = userRegistrationService.registerBuyer(reqDto);
             if (registrationSuccess) {
                 responseDto.setMessage("Registration successful!! Please login...");
             }

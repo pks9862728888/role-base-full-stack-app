@@ -5,6 +5,9 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.23.xsd">
 
+    <changeSet id="tag-00-changeset" author="liquibaseuser">
+        <tagDatabase tag="0.0"/>
+    </changeSet>
     <changeSet id="create-table-user" author="liquibaseuser">
         <createTable tableName="user">
             <column name="id" type="serial">
@@ -33,7 +36,7 @@
             <column name="updated" type="timestamp"/>
         </createTable>
     </changeSet>
-    <changeSet id="tag-02-changeset" author="liquibaseuser">
-        <tagDatabase tag="2.0"/>
+    <changeSet id="tag-01-changeset" author="liquibaseuser">
+        <tagDatabase tag="1.0"/>
     </changeSet>
 </databaseChangeLog>

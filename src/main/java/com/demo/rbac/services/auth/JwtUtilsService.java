@@ -1,7 +1,7 @@
 package com.demo.rbac.services.auth;
 
 import com.demo.rbac.config.security.SecurityConfigParams;
-import com.demo.rbac.entities.User;
+import com.demo.rbac.entities.users.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.JwtParser;
@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import javax.crypto.SecretKey;
 import java.util.Date;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 @Slf4j
@@ -24,6 +25,7 @@ public class JwtUtilsService {
     private final SecurityConfigParams securityConfigParams;
     private JwtParser jwtParser;
     public static final String BEARER = "Bearer";
+    public static final String ROLES = "Roles";
 
     @PostConstruct
     public void init() {
@@ -42,6 +44,7 @@ public class JwtUtilsService {
                 .issuedAt(iat)
                 .expiration(new Date(iat.getTime() +
                         TimeUnit.MINUTES.toMillis(securityConfigParams.getTokenExpiryMin())))
+                .claims(Map.of(ROLES, user.getAuthorities()))
                 .signWith(getSecretKey())
                 .compact();
     }

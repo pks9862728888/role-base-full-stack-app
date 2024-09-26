@@ -1,6 +1,6 @@
 package com.demo.rbac.repositories;
 
-import com.demo.rbac.entities.User;
+import com.demo.rbac.entities.users.User;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

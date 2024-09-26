@@ -1,11 +1,13 @@
-package com.demo.rbac.entities;
+package com.demo.rbac.entities.users;
 
+import com.demo.rbac.entities.Audit;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -32,10 +34,12 @@ public class User extends Audit implements UserDetails {
     private boolean enabled;
     @Column(name = "is_locked")
     private boolean locked;
+    @OneToOne(mappedBy = "user")
+    private UserRole userRole;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of();
+        return List.of(userRole.getRole());
     }
 
     @Override
