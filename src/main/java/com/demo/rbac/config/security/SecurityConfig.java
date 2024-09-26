@@ -1,5 +1,6 @@
 package com.demo.rbac.config.security;
 
+import com.demo.rbac.config.security.filters.JwtAuthorizationFilter;
 import com.demo.rbac.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -15,12 +16,14 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @RequiredArgsConstructor
 @EnableWebSecurity
 public class SecurityConfig {
     private final UserRepository userRepository;
+    private final JwtAuthorizationFilter jwtAuthorizationFilter;
 
     @Bean
     public SecurityFilterChain securityFilterChain(final HttpSecurity http) throws Exception {
@@ -28,8 +31,17 @@ public class SecurityConfig {
                         .requestMatchers("/api/v1/auth/login").permitAll()
                         .requestMatchers("/api/v1/register/user").permitAll()
                         .anyRequest().authenticated())
-                .csrf(AbstractHttpConfigurer::disable);
+                .csrf(AbstractHttpConfigurer::disable)
+                .addFilterBefore(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
+    }
+
+    @Bean
+    public AuthenticationManager authenticationManager(
+            HttpSecurity httpSecurity, AuthenticationProvider authenticationProvider) throws Exception {
+        AuthenticationManagerBuilder amb = httpSecurity.getSharedObject(AuthenticationManagerBuilder.class);
+        amb.authenticationProvider(authenticationProvider);
+        return amb.build();
     }
 
     @Bean
@@ -39,14 +51,6 @@ public class SecurityConfig {
         authenticationProvider.setPasswordEncoder(passwordEncoder);
         authenticationProvider.setUserDetailsService(userDetailsService);
         return authenticationProvider;
-    }
-
-    @Bean
-    public AuthenticationManager authenticationManager(
-            HttpSecurity httpSecurity, AuthenticationProvider authenticationProvider) throws Exception {
-        AuthenticationManagerBuilder amb = httpSecurity.getSharedObject(AuthenticationManagerBuilder.class);
-        amb.authenticationProvider(authenticationProvider);
-        return amb.build();
     }
 
     @Bean

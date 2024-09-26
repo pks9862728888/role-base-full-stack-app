@@ -1,7 +1,6 @@
 spring:
   application:
-    name:
-      role-base-full-stack-app
+    name: role-base-full-stack-app
   datasource:
     url: jdbc:mysql://localhost:3307/mysqlrbac
     username: root
@@ -20,3 +19,4 @@ security:
   jwt:
     secretKey: superSecretKey#@somerandomhash12321@123
     tokenExpiryMin: 3600000
+    issuer: ${spring.application.name}

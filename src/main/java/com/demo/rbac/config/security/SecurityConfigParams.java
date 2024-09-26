@@ -12,4 +12,5 @@ import org.springframework.context.annotation.Configuration;
 public class SecurityConfigParams {
     private String secretKey;
     private long tokenExpiryMin;
+    private String issuer;
 }

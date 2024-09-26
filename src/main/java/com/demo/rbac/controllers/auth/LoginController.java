@@ -4,11 +4,12 @@ import com.demo.rbac.entities.User;
 import com.demo.rbac.exchanges.request.LoginRequestDto;
 import com.demo.rbac.exchanges.response.GenericResponseDto;
 import com.demo.rbac.services.UserService;
-import com.demo.rbac.services.auth.JwtService;
+import com.demo.rbac.services.auth.JwtUtilsService;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -27,7 +28,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class LoginController {
     private final AuthenticationManager authenticationManager;
-    private final JwtService jwtService;
+    private final JwtUtilsService jwtUtilsService;
     private final UserService userService;
 
     @PostMapping("/login")
@@ -39,8 +40,8 @@ public class LoginController {
                     new UsernamePasswordAuthenticationToken(reqDto.getUsername(), reqDto.getPassword()));
             String username = authentication.getName();
             User user = userService.findUserByUsername(username);
-            String token = jwtService.createJwtToken(user);
-            response.setHeader("Authorization", token);
+            String token = jwtUtilsService.createJwtToken(user);
+            response.setHeader(HttpHeaders.AUTHORIZATION, token);
             responseDto.setHttpStatus(HttpStatus.OK);
             responseDto.setMessage("Login success!");
             log.info("User: {} logged in!", user.getUsername());
