@@ -1,6 +1,6 @@
 package com.demo.rbac.services.auth;
 
-import com.demo.rbac.config.security.SecurityConfigParams;
+import com.demo.rbac.config.security.configparams.SecurityConfigParams;
 import com.demo.rbac.entities.users.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
@@ -40,10 +40,10 @@ public class JwtUtilsService {
         Date iat = new Date();
         return Jwts.builder()
                 .subject(user.getUsername())
-                .issuer(securityConfigParams.getIssuer())
+                .issuer(securityConfigParams.getJwt().getIssuer())
                 .issuedAt(iat)
                 .expiration(new Date(iat.getTime() +
-                        TimeUnit.MINUTES.toMillis(securityConfigParams.getTokenExpiryMin())))
+                        TimeUnit.MINUTES.toMillis(securityConfigParams.getJwt().getTokenExpiryMin())))
                 .claims(Map.of(ROLES, user.getAuthorities()))
                 .signWith(getSecretKey())
                 .compact();
@@ -54,13 +54,13 @@ public class JwtUtilsService {
     }
 
     public SecretKey getSecretKey() {
-        return Keys.hmacShaKeyFor(securityConfigParams.getSecretKey().getBytes());
+        return Keys.hmacShaKeyFor(securityConfigParams.getJwt().getSecretKey().getBytes());
     }
 
     public boolean isTokenValid(Jws<Claims> parsedJwt) {
         boolean isTokenValid = true;
         Claims claims = parsedJwt.getPayload();
-        if (!securityConfigParams.getIssuer().equals(claims.getIssuer())) {
+        if (!securityConfigParams.getJwt().getIssuer().equals(claims.getIssuer())) {
             log.warn("Not a valid issuer: {}", claims.getIssuer());
             isTokenValid = false;
         }

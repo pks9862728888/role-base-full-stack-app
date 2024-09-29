@@ -20,3 +20,4 @@ security:
     secretKey: superSecretKey#@somerandomhash12321@123
     tokenExpiryMin: 3600000
     issuer: ${spring.application.name}
+  corsAllowedOrigins: http://localhost:4200,http://localhost:9050

@@ -1,16 +1,19 @@
-package com.demo.rbac.config.security;
+package com.demo.rbac.config.security.configparams;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
+
+import java.util.List;
 
 @Getter
 @Setter
 @Configuration
-@ConfigurationProperties(prefix = "security.jwt")
+@ConfigurationProperties(prefix = "security")
+@ToString(callSuper = true)
 public class SecurityConfigParams {
-    private String secretKey;
-    private long tokenExpiryMin;
-    private String issuer;
+    private JwtConfigParams jwt;
+    private List<String> corsAllowedOrigins;
 }
