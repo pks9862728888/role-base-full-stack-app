@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {AuthService} from "../../../services/auth.service";
 import {Router} from '@angular/router';
-import {HttpConstants} from "../../../models/http-constants";
 import {SessionStorageService} from "../../../services/session-storage.service";
 import {ILoginResponseDto} from "../../../interfaces/i-login-response-dto";
 
@@ -35,7 +34,7 @@ export class LoginComponent {
       this.authService.login(val.username, val.password).subscribe({
         next: (res: ILoginResponseDto) => {
           if (res.bearerToken) {
-            this.sessionStorageService.save(HttpConstants.AUTHORIZATION, res.bearerToken);
+            this.sessionStorageService.saveAuthToken(res.bearerToken);
             return this.router.navigateByUrl('dashboard');
           }
           console.log("Auth token not found after login!");
