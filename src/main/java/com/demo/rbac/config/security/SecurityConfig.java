@@ -2,7 +2,7 @@ package com.demo.rbac.config.security;
 
 import com.demo.rbac.config.security.configparams.SecurityConfigParams;
 import com.demo.rbac.config.security.filters.JwtAuthorizationFilter;
-import com.demo.rbac.repositories.UserRepository;
+import com.demo.rbac.repositories.UserAccountRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
@@ -24,7 +24,7 @@ import org.springframework.web.cors.CorsConfiguration;
 @Configuration
 @RequiredArgsConstructor
 public class SecurityConfig {
-    private final UserRepository userRepository;
+    private final UserAccountRepository userAccountRepository;
     private final JwtAuthorizationFilter jwtAuthorizationFilter;
     private final SecurityConfigParams securityConfigParams;
 
@@ -68,7 +68,7 @@ public class SecurityConfig {
 
     @Bean
     public UserDetailsService userDetailsService() {
-        return userRepository::findByUsername;
+        return userAccountRepository::findByUsername;
     }
 
     @Bean

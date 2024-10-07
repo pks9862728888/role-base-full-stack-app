@@ -21,7 +21,7 @@ import java.util.List;
 @Getter
 @Setter
 @ToString(callSuper = true)
-public class User extends Audit implements UserDetails {
+public class UserAccount extends Audit implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,7 +34,7 @@ public class User extends Audit implements UserDetails {
     private boolean enabled;
     @Column(name = "is_locked")
     private boolean locked;
-    @OneToOne(mappedBy = "user")
+    @OneToOne(mappedBy = "userAccount")
     private UserRole userRole;
 
     @Override

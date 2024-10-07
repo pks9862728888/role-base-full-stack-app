@@ -8,8 +8,8 @@
     <changeSet id="tag-00-changeset" author="liquibaseuser">
         <tagDatabase tag="0.0"/>
     </changeSet>
-    <changeSet id="create-table-user" author="liquibaseuser">
-        <createTable tableName="user">
+    <changeSet id="create-table-user_account" author="liquibaseuser">
+        <createTable tableName="user_account">
             <column name="id" type="serial">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
@@ -26,7 +26,7 @@
         <createTable tableName="user_details">
             <column name="user_id" type="serial">
                 <constraints foreignKeyName="fk_user_userdetails"
-                             referencedTableName="user"
+                             referencedTableName="user_account"
                              referencedColumnNames="id"
                              primaryKey="true"/>
             </column>

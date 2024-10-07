@@ -25,8 +25,8 @@ public class UserRole extends Audit {
     @Enumerated(value = EnumType.STRING)
     private Role role;
     @MapsId
-    @OneToOne(targetEntity = User.class)
-    private User user;
+    @OneToOne(targetEntity = UserAccount.class)
+    private UserAccount userAccount;
 
     @Tolerate
     public UserRole() {

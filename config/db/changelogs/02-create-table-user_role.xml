@@ -10,7 +10,7 @@
             <column name="user_id" type="serial">
                 <constraints primaryKey="true"
                              foreignKeyName="fk_user_role"
-                             referencedTableName="user"
+                             referencedTableName="user_account"
                              referencedColumnNames="id"
                              unique="true"/>
             </column>

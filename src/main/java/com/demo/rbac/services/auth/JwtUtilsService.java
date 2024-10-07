@@ -1,7 +1,7 @@
 package com.demo.rbac.services.auth;
 
 import com.demo.rbac.config.security.configparams.SecurityConfigParams;
-import com.demo.rbac.entities.users.User;
+import com.demo.rbac.entities.users.UserAccount;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.JwtParser;
@@ -36,15 +36,15 @@ public class JwtUtilsService {
         return StringUtils.substringAfter(authorizationToken, BEARER).trim();
     }
 
-    public String createJwtToken(User user) {
+    public String createJwtToken(UserAccount userAccount) {
         Date iat = new Date();
         return Jwts.builder()
-                .subject(user.getUsername())
+                .subject(userAccount.getUsername())
                 .issuer(securityConfigParams.getJwt().getIssuer())
                 .issuedAt(iat)
                 .expiration(new Date(iat.getTime() +
                         TimeUnit.MINUTES.toMillis(securityConfigParams.getJwt().getTokenExpiryMin())))
-                .claims(Map.of(ROLES, user.getAuthorities()))
+                .claims(Map.of(ROLES, userAccount.getAuthorities()))
                 .signWith(getSecretKey())
                 .compact();
     }

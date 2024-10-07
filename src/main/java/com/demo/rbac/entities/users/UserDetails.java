@@ -21,5 +21,5 @@ public class UserDetails extends Audit {
     private String lastName;
     @MapsId
     @OneToOne
-    private User user;
+    private UserAccount userAccount;
 }

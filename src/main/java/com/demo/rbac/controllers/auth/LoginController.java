@@ -1,9 +1,9 @@
 package com.demo.rbac.controllers.auth;
 
-import com.demo.rbac.entities.users.User;
+import com.demo.rbac.entities.users.UserAccount;
 import com.demo.rbac.exchanges.request.LoginRequestDto;
 import com.demo.rbac.exchanges.response.LoginResponseDto;
-import com.demo.rbac.services.UserService;
+import com.demo.rbac.services.UserAccountService;
 import com.demo.rbac.services.auth.JwtUtilsService;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
@@ -29,7 +29,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class LoginController {
     private final AuthenticationManager authenticationManager;
     private final JwtUtilsService jwtUtilsService;
-    private final UserService userService;
+    private final UserAccountService userAccountService;
 
     private static void logLoginFailedException(LoginRequestDto reqDto, Exception e) {
         log.warn("Login failed for user: {} ex: {}", reqDto.getUsername(), e.toString());
@@ -43,12 +43,12 @@ public class LoginController {
             Authentication authentication = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(reqDto.getUsername(), reqDto.getPassword()));
             String username = authentication.getName();
-            User user = userService.findUserByUsername(username);
-            String token = jwtUtilsService.createJwtToken(user);
+            UserAccount userAccount = userAccountService.findUserByUsername(username);
+            String token = jwtUtilsService.createJwtToken(userAccount);
             responseDto.setBearerToken(token);
             responseDto.setHttpStatus(HttpStatus.OK);
             responseDto.setMessage("Login success!");
-            log.info("User: {} logged in!", user.getUsername());
+            log.info("User: {} logged in!", userAccount.getUsername());
         } catch (LockedException e) {
             logLoginFailedException(reqDto, e);
             responseDto.setMessage("Account is locked, please contact support...");
