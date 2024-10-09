@@ -14,12 +14,14 @@ import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.Tolerate;
 
+import java.io.Serializable;
+
 @Getter
 @Setter
 @Entity
 @Builder
 @ToString(callSuper = true)
-public class UserRole extends Audit {
+public class UserRole extends Audit implements Serializable {
     @Id
     private Long userId;
     @Enumerated(value = EnumType.STRING)
@@ -30,5 +32,7 @@ public class UserRole extends Audit {
 
     @Tolerate
     public UserRole() {
+        // Empty constructor is created so that
+        // using new operator also object can be created
     }
 }

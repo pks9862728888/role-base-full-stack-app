@@ -3,25 +3,25 @@ package com.demo.rbac.services;
 import com.demo.rbac.entities.users.UserAccount;
 import com.demo.rbac.repositories.UserAccountRepository;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
-@SpringBootTest
-@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-@ActiveProfiles("test")
+@ExtendWith(SpringExtension.class)
+//@SpringBootTest
+//@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+//@ActiveProfiles("test")
 class UserAccountServiceTest {
 
-    @MockBean
+    @Mock
     private UserAccountRepository userAccountRepository;
 
-    @Autowired
+    @InjectMocks
     private UserAccountService userAccountService;
 
     @Test
@@ -33,5 +33,6 @@ class UserAccountServiceTest {
                 .thenReturn(userAccount);
         UserAccount userAccountByUsername = userAccountService.findUserByUsername(testUsername);
         assertEquals(userAccountByUsername, userAccount);
+        verify(userAccountRepository, times(1)).findByUsername(testUsername);
     }
 }

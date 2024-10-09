@@ -29,7 +29,11 @@ public class UserRegistrationService {
     public boolean registerBuyer(@Valid UserRegistrationRequestDto reqDto) {
         UserAccount userAccount = mapToUserEntity(reqDto);
         userAccount = userAccountRepository.saveAndFlush(userAccount);
-        UserRole userRole = UserRole.builder().userId(userAccount.getId()).userAccount(userAccount).role(Role.ROLE_BUYER).build();
+        UserRole userRole = UserRole.builder()
+                .userId(userAccount.getId())
+                .userAccount(userAccount)
+                .role(Role.ROLE_BUYER)
+                .build();
         userRoleRepository.saveAndFlush(userRole);
         UserDetails userDetails = new UserDetails();
         userDetails.setUserAccount(userAccount);
@@ -38,7 +42,7 @@ public class UserRegistrationService {
         return true;
     }
 
-    private UserAccount mapToUserEntity(UserRegistrationRequestDto reqDto) {
+    public UserAccount mapToUserEntity(UserRegistrationRequestDto reqDto) {
         UserAccount userAccount = new UserAccount();
         userAccount.setEmail(reqDto.getEmail());
         userAccount.setUsername(reqDto.getUsername());

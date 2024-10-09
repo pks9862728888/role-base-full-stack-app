@@ -84,7 +84,6 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
                 res.setStatus(HttpStatus.UNAUTHORIZED.value());
             }
         } catch (Exception e) {
-            e.printStackTrace();
             log.error("Exception while validating bearer token: {}", e.toString());
             res.setStatus(HttpStatus.UNAUTHORIZED.value());
         }
