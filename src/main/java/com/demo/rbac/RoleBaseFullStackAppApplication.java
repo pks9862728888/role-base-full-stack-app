@@ -10,8 +10,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 @EnableMethodSecurity
 public class RoleBaseFullStackAppApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(RoleBaseFullStackAppApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(RoleBaseFullStackAppApplication.class, args);
+    }
 
 }

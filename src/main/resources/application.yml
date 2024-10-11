@@ -1,7 +1,11 @@
 spring:
   application:
-    name:
-      role-base-full-stack-app
+    name: role-base-full-stack-app
+  cache:
+    type: redis
+  data:
+    redis:
+      database: 1
 
 server:
   port: 9050

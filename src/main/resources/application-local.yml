@@ -1,6 +1,10 @@
 spring:
   application:
     name: role-base-full-stack-app
+  data:
+    redis:
+      host: localhost
+      port: 6379
   datasource:
     url: jdbc:mysql://localhost:3307/mysqlrbac
     username: root
