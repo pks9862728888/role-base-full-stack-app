@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.23.xsd">
+
+    <changeSet id="create-table-user_role" author="liquibaseuser">
+        <createTable tableName="user_role">
+            <column name="user_id" type="serial">
+                <constraints primaryKey="true"
+                             foreignKeyName="fk_user_role"
+                             referencedTableName="user_account"
+                             referencedColumnNames="id"
+                             unique="true"/>
+            </column>
+            <column name="role" type="varchar(100)"/>
+            <column name="created" type="timestamp"/>
+            <column name="updated" type="timestamp"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="tag-02-changeset" author="liquibaseuser">
+        <tagDatabase tag="2.0"/>
+    </changeSet>
+</databaseChangeLog>
