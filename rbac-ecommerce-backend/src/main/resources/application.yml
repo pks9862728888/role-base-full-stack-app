@@ -1,21 +1,10 @@
 spring:
   application:
     name: rbac-ecommerce-backend
-  cache:
-    type: redis
-  data:
-    redis:
-      database: 1
 
-server:
-  port: 9050
-
-springdoc:
-  api-docs:
-    enabled: true
-  swagger-ui:
-    enabled: true
-
-logging:
-  level:
-    org.springframework.security: DEBUG
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+    import: optional:configserver:http://localhost:8888/

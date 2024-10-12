@@ -1,1 +1,22 @@
-spring.application.name=role-based-full-stack-app-config-server
+spring:
+  application:
+    name: rbac-ecommerce-config-server
+
+server:
+  port: 8888
+
+logging:
+  level:
+    org.springframework.web: INFO
+    org.springframework.cloud: INFO
+
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: file:${user.dir}/rbac-ecommerce-config-server/config
