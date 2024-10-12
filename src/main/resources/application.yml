@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: role-base-full-stack-app
+  cache:
+    type: redis
+  data:
+    redis:
+      database: 1
+
+server:
+  port: 9050
+
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
+
+logging:
+  level:
+    org.springframework.security: DEBUG
