@@ -1,6 +1,6 @@
-package com.demo.rbac.ecommerce.backend.entities.user;
+package com.demo.rbac.ecommerce.persistence.entitites.user;
 
-import com.demo.rbac.ecommerce.backend.entities.Audit;
+import com.demo.rbac.ecommerce.persistence.entitites.Audit;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

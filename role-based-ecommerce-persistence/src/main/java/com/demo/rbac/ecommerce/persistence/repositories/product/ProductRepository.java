@@ -1,6 +1,6 @@
-package com.demo.rbac.ecommerce.backend.repositories;
+package com.demo.rbac.ecommerce.persistence.repositories.product;
 
-import com.demo.rbac.ecommerce.backend.entities.Product;
+import com.demo.rbac.ecommerce.persistence.entitites.product.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

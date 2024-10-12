@@ -1,7 +1,7 @@
 package com.demo.rbac.ecommerce.backend.services;
 
-import com.demo.rbac.ecommerce.backend.entities.user.UserAccount;
-import com.demo.rbac.ecommerce.backend.repositories.UserAccountRepository;
+import com.demo.rbac.ecommerce.persistence.entitites.user.UserAccount;
+import com.demo.rbac.ecommerce.persistence.repositories.user.UserAccountRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

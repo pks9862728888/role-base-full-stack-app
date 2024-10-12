@@ -1,4 +1,4 @@
-package com.demo.rbac.ecommerce.backend.entities;
+package com.demo.rbac.ecommerce.persistence.entitites;
 
 import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.PrePersist;

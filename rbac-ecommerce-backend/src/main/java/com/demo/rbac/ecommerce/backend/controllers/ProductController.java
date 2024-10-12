@@ -1,7 +1,7 @@
 package com.demo.rbac.ecommerce.backend.controllers;
 
-import com.demo.rbac.ecommerce.backend.entities.Product;
 import com.demo.rbac.ecommerce.backend.services.ProductService;
+import com.demo.rbac.ecommerce.persistence.entitites.product.Product;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +18,7 @@ import java.util.List;
 public class ProductController extends GenericExceptionHandler {
     private final ProductService productService;
 
-    @PreAuthorize("hasRole(T(com.demo.rbac.ecommerce.backend.enums.Role).ROLE_BUYER.name())")
+    @PreAuthorize("hasRole(T(com.demo.rbac.ecommerce.persistence.enums.Role).ROLE_BUYER.name())")
     @GetMapping("/list")
     public ResponseEntity<List<Product>> list() {
         return new ResponseEntity<>(productService.findAll(), HttpStatus.OK);

@@ -31,7 +31,7 @@
     </scm>
     <properties>
         <java.version>17</java.version>
-        <liquibase.version>4.23.0</liquibase.version>
+        <role-based-ecommerce-persistence.version>1.0.0</role-based-ecommerce-persistence.version>
         <spring-cloud.version>2023.0.3</spring-cloud.version>
         <springdoc-openapi-starter-webmvc-ui.version>2.5.0</springdoc-openapi-starter-webmvc-ui.version>
         <jjwt.version>0.12.6</jjwt.version>
@@ -42,6 +42,12 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!-- Custom dependencies -->
+        <dependency>
+            <groupId>com.demo</groupId>
+            <artifactId>role-based-ecommerce-persistence</artifactId>
+            <version>${role-based-ecommerce-persistence.version}</version>
         </dependency>
         <!-- Config server -->
         <dependency>
@@ -123,27 +129,6 @@
     </dependencyManagement>
     <profiles>
         <profile>
-            <id>liquibase</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.liquibase</groupId>
-                        <artifactId>liquibase-maven-plugin</artifactId>
-                        <version>${liquibase.version}</version>
-                        <configuration>
-                            <url>${LIQUIBASE_DB_URL}</url>
-                            <username>${LIQUIBASE_DB_USERNAME}</username>
-                            <password>${LIQUIBASE_DB_PASSWORD}</password>
-                            <defaultSchemaName>${LIQUIBASE_DEFAULT_SCHEMA}</defaultSchemaName>
-                            <driver>com.mysql.cj.jdbc.Driver</driver>
-                            <changeLogFile>config/db/db.changelog-master.xml</changeLogFile>
-                            <logging>info</logging>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
             <id>sonar</id>
             <build>
                 <plugins>
@@ -156,7 +141,6 @@
             </build>
         </profile>
     </profiles>
-
     <build>
         <plugins>
             <plugin>
