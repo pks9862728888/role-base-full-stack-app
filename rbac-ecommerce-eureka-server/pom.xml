@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.demo</groupId>
-	<artifactId>rbac-ecommerce-config-server</artifactId>
+	<artifactId>rbac.ecommerce.eurekaserver</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>role-based-full-stack-app-config-server</name>
-	<description>Demo project for Spring Boot</description>
+	<name>rbac-ecommerce-eureka-server</name>
+	<description>Eureka server for rbac-ecommerce project</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -31,16 +31,10 @@
 		<spring-cloud.version>2023.0.3</spring-cloud.version>
 	</properties>
 	<dependencies>
-		<!-- Spring cloud config server and eureka server -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-config-server</artifactId>
+			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-		</dependency>
-		<!-- To help with configurable properties in properties files -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-configuration-processor</artifactId>

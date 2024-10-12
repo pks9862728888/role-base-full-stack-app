@@ -1,6 +1,6 @@
 package com.demo.rbac.ecommerce.backend.repositories;
 
-import com.demo.rbac.ecommerce.backend.entities.users.UserAccount;
+import com.demo.rbac.ecommerce.backend.entities.user.UserAccount;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

@@ -1,7 +1,7 @@
 package com.demo.rbac.ecommerce.backend.services.auth;
 
 import com.demo.rbac.ecommerce.backend.config.security.configparams.SecurityConfigParams;
-import com.demo.rbac.ecommerce.backend.entities.users.UserAccount;
+import com.demo.rbac.ecommerce.backend.entities.user.UserAccount;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.JwtParser;

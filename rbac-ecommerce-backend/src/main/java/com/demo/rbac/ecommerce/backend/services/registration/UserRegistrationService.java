@@ -1,8 +1,8 @@
 package com.demo.rbac.ecommerce.backend.services.registration;
 
-import com.demo.rbac.ecommerce.backend.entities.users.UserAccount;
-import com.demo.rbac.ecommerce.backend.entities.users.UserDetails;
-import com.demo.rbac.ecommerce.backend.entities.users.UserRole;
+import com.demo.rbac.ecommerce.backend.entities.user.UserAccount;
+import com.demo.rbac.ecommerce.backend.entities.user.UserDetails;
+import com.demo.rbac.ecommerce.backend.entities.user.UserRole;
 import com.demo.rbac.ecommerce.backend.enums.Role;
 import com.demo.rbac.ecommerce.backend.exchanges.request.UserRegistrationRequestDto;
 import com.demo.rbac.ecommerce.backend.exchanges.response.UserRegistrationResponseDto;
