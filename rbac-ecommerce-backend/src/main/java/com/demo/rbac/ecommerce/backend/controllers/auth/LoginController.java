@@ -1,6 +1,6 @@
 package com.demo.rbac.ecommerce.backend.controllers.auth;
 
-import com.demo.rbac.ecommerce.backend.entities.users.UserAccount;
+import com.demo.rbac.ecommerce.backend.entities.user.UserAccount;
 import com.demo.rbac.ecommerce.backend.exchanges.request.LoginRequestDto;
 import com.demo.rbac.ecommerce.backend.exchanges.response.LoginResponseDto;
 import com.demo.rbac.ecommerce.backend.services.UserAccountService;

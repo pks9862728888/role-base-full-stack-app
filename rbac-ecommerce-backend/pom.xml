@@ -32,7 +32,7 @@
     <properties>
         <java.version>17</java.version>
         <liquibase.version>4.23.0</liquibase.version>
-        <spring-cloud-starter-config.version>4.1.2</spring-cloud-starter-config.version>
+        <spring-cloud.version>2023.0.3</spring-cloud.version>
         <springdoc-openapi-starter-webmvc-ui.version>2.5.0</springdoc-openapi-starter-webmvc-ui.version>
         <jjwt.version>0.12.6</jjwt.version>
         <sonar-maven-plugin.version>3.7.0.1746</sonar-maven-plugin.version>
@@ -47,7 +47,11 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-config</artifactId>
-            <version>${spring-cloud-starter-config.version}</version>
+        </dependency>
+        <!-- Eureka client -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
         <!-- Db related -->
         <dependency>
@@ -106,6 +110,17 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
     <profiles>
         <profile>
             <id>liquibase</id>
