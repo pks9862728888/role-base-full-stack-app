@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.demo</groupId>
-    <artifactId>rbacecommercebackend</artifactId>
+    <artifactId>rbac-ecommerce-backend</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>rbac</name>
-    <description>Demo project for Spring Boot RBAC</description>
+    <name>rbac-ecommerce-backend</name>
+    <description>Demo project for Spring Boot RBAC ecommerce app</description>
     <url/>
     <licenses>
         <license/>
@@ -31,7 +31,7 @@
     </scm>
     <properties>
         <java.version>17</java.version>
-        <role-based-ecommerce-persistence.version>1.0.0</role-based-ecommerce-persistence.version>
+        <rbac-ecommerce-persistence.version>1.0.0</rbac-ecommerce-persistence.version>
         <spring-cloud.version>2023.0.3</spring-cloud.version>
         <springdoc-openapi-starter-webmvc-ui.version>2.5.0</springdoc-openapi-starter-webmvc-ui.version>
         <jjwt.version>0.12.6</jjwt.version>
@@ -45,9 +45,9 @@
         </dependency>
         <!-- Custom dependencies -->
         <dependency>
-            <groupId>com.demo</groupId>
-            <artifactId>role-based-ecommerce-persistence</artifactId>
-            <version>${role-based-ecommerce-persistence.version}</version>
+            <groupId>com.demo.rbac.ecommerce</groupId>
+            <artifactId>rbac-ecommerce-persistence</artifactId>
+            <version>${rbac-ecommerce-persistence.version}</version>
         </dependency>
         <!-- Config server -->
         <dependency>
@@ -175,14 +175,6 @@
                     </execution>
                 </executions>
             </plugin>
-
         </plugins>
     </build>
-    <repositories>
-        <repository>
-            <id>maven_central</id>
-            <name>Maven Central</name>
-            <url>https://repo.maven.apache.org/maven2/</url>
-        </repository>
-    </repositories>
 </project>

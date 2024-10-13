@@ -8,8 +8,8 @@
 		<version>3.3.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.demo</groupId>
-	<artifactId>rbac.ecommerce.eurekaserver</artifactId>
+	<groupId>com.demo.rbac.ecommerce</groupId>
+	<artifactId>rbac-ecommerce-eurekaserver</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>rbac-ecommerce-eureka-server</name>
 	<description>Eureka server for rbac-ecommerce project</description>

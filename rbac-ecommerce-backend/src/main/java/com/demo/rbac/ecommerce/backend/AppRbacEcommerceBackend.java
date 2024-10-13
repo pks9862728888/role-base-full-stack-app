@@ -8,10 +8,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 
-@SpringBootApplication(scanBasePackages = {
-        "com.demo.rbac.ecommerce.persistence",
-        "com.demo.rbac.ecommerce.backend"
-})
+@SpringBootApplication
 @EnableDiscoveryClient
 @EnableWebSecurity
 @EnableMethodSecurity
