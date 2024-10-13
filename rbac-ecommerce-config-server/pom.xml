@@ -8,10 +8,10 @@
 		<version>3.3.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.demo</groupId>
-	<artifactId>rbac-ecommerce-config-server</artifactId>
+	<groupId>com.demo.rbac.ecommerce</groupId>
+	<artifactId>rbac-ecommerce-configserver</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>role-based-full-stack-app-config-server</name>
+	<name>rbac-ecommerce-configserver</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>

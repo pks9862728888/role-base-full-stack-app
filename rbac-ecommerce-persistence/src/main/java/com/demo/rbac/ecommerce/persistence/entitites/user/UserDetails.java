@@ -1,6 +1,6 @@
-package com.demo.rbac.ecommerce.backend.entities.user;
+package com.demo.rbac.ecommerce.persistence.entitites.user;
 
-import com.demo.rbac.ecommerce.backend.entities.Audit;
+import com.demo.rbac.ecommerce.persistence.entitites.Audit;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.MapsId;

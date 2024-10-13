@@ -1,10 +1,10 @@
 package com.demo.rbac.ecommerce.backend.controllers.auth;
 
-import com.demo.rbac.ecommerce.backend.entities.user.UserAccount;
 import com.demo.rbac.ecommerce.backend.exchanges.request.LoginRequestDto;
 import com.demo.rbac.ecommerce.backend.exchanges.response.LoginResponseDto;
 import com.demo.rbac.ecommerce.backend.services.UserAccountService;
 import com.demo.rbac.ecommerce.backend.services.auth.JwtUtilsService;
+import com.demo.rbac.ecommerce.persistence.entitites.user.UserAccount;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

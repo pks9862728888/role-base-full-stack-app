@@ -2,7 +2,7 @@ package com.demo.rbac.ecommerce.backend.config.security;
 
 import com.demo.rbac.ecommerce.backend.config.security.configparams.SecurityConfigParams;
 import com.demo.rbac.ecommerce.backend.config.security.filters.JwtAuthorizationFilter;
-import com.demo.rbac.ecommerce.backend.repositories.UserAccountRepository;
+import com.demo.rbac.ecommerce.persistence.repositories.user.UserAccountRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
