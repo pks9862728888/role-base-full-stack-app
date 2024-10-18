@@ -1,7 +1,7 @@
 package com.demo.rbac.ecommerce.persistence.entitites.user;
 
+import com.demo.rbac.ecommerce.common.enums.Role;
 import com.demo.rbac.ecommerce.persistence.entitites.Audit;
-import com.demo.rbac.ecommerce.persistence.enums.Role;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;

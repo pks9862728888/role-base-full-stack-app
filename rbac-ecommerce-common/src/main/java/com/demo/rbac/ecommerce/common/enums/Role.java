@@ -1,4 +1,4 @@
-package com.demo.rbac.ecommerce.persistence.enums;
+package com.demo.rbac.ecommerce.common.enums;
 
 import org.springframework.security.core.GrantedAuthority;
 

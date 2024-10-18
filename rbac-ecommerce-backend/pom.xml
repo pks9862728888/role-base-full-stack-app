@@ -31,6 +31,7 @@
     </scm>
     <properties>
         <java.version>17</java.version>
+        <rbac-ecommerce-common.version>1.0.0</rbac-ecommerce-common.version>
         <rbac-ecommerce-persistence.version>1.0.0</rbac-ecommerce-persistence.version>
         <spring-cloud.version>2023.0.3</spring-cloud.version>
         <springdoc-openapi-starter-webmvc-ui.version>2.5.0</springdoc-openapi-starter-webmvc-ui.version>
@@ -44,6 +45,11 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <!-- Custom dependencies -->
+        <dependency>
+            <groupId>com.demo.rbac.ecommerce</groupId>
+            <artifactId>rbac-ecommerce-common</artifactId>
+            <version>${rbac-ecommerce-common.version}</version>
+        </dependency>
         <dependency>
             <groupId>com.demo.rbac.ecommerce</groupId>
             <artifactId>rbac-ecommerce-persistence</artifactId>

@@ -2,10 +2,10 @@ package com.demo.rbac.ecommerce.backend.services.registration;
 
 import com.demo.rbac.ecommerce.backend.exchanges.request.UserRegistrationRequestDto;
 import com.demo.rbac.ecommerce.backend.exchanges.response.UserRegistrationResponseDto;
+import com.demo.rbac.ecommerce.common.enums.Role;
 import com.demo.rbac.ecommerce.persistence.entitites.user.UserAccount;
 import com.demo.rbac.ecommerce.persistence.entitites.user.UserDetails;
 import com.demo.rbac.ecommerce.persistence.entitites.user.UserRole;
-import com.demo.rbac.ecommerce.persistence.enums.Role;
 import com.demo.rbac.ecommerce.persistence.repositories.user.UserAccountRepository;
 import com.demo.rbac.ecommerce.persistence.repositories.user.UserDetailsRepository;
 import com.demo.rbac.ecommerce.persistence.repositories.user.UserRoleRepository;
