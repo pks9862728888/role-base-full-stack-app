@@ -1,2 +1,6 @@
+spring:
+  application:
+    name: rbac-ecommerce-product-catalog
+
 server:
   port: 8081
