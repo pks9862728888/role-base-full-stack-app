@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: rbac-ecommerce-gateway
+
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+    import: optional:configserver:http://localhost:8888/
