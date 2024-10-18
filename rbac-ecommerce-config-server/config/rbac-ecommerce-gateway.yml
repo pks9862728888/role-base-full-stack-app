@@ -1,9 +1,11 @@
 spring:
   cloud:
     gateway:
+      # This will help to resolve service address based on registry in discovery server
       discovery:
         locator:
           enabled: true
+      routes: []
     loadbalancer:
       ribbon:
         enabled: true
