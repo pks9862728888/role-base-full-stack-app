@@ -1,0 +1,3 @@
+# Put service names here instead of hardcoding everywhere in client application
+PRODUCT_CATALOG_SERVICE: rbac-ecommerce-product-catalog
+USER_SERVICE: rbac-ecommerce-user-service
