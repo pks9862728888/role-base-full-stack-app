@@ -2,7 +2,7 @@ package com.demo.rbac.ecommerce.backend.config.security.filters;
 
 
 import com.demo.rbac.ecommerce.backend.services.auth.JwtUtilsService;
-import com.demo.rbac.ecommerce.persistence.enums.Role;
+import com.demo.rbac.ecommerce.common.enums.Role;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import jakarta.servlet.FilterChain;
