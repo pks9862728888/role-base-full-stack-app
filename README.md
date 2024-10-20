@@ -31,3 +31,24 @@ mvn clean verify sonar:sonar \
   -Dsonar.token=$SONAR_TOKEN
 ```
 Set system env variable SONAR_TOKEN
+
+## To generate self-signed SSL certificate <hr />
+- Generate a private key
+```shell
+openssl genrsa -out config/ssl/localhost-private.key 2048
+```
+- Generate certificate signing request (CSR) using private key
+```shell
+openssl req -new -nodes -key config/ssl/localhost-private.key -out config/ssl/localhost.pem
+```
+- Generate a self-signed certificate
+```shell
+openssl x509 -req -days 1024 -in config/ssl/localhost.pem -signkey config/ssl/localhost-private.key -out config/ssl/localhost.crt
+```
+- Verify the certificate
+```shell
+openssl x509 -in config/ssl/localhost.crt -text -noout
+```
+```shell
+openssl verify config/ssl/localhost.crt 
+```

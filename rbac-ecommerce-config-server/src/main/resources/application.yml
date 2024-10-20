@@ -24,4 +24,19 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka
+      defaultZone: https://localhost:8761/eureka
+
+#encrypt:
+#  key-store:
+#    location: classpath:localhost-keystore.jks
+#    alias: localhostcert
+#    password: keystorep
+#    type: jks
+
+server:
+  ssl:
+    key-store: classpath:localhost-keystore.jks
+    key-store-password: keystorep
+    key-alias: localhost
+    key-store-type: jks
+    enabled: true

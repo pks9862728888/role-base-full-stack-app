@@ -23,3 +23,17 @@ logging:
     org.springframework.security: DEBUG
     org.springframework.web: INFO
     org.springframework.cloud: INFO
+
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+
+server:
+  ssl:
+    key-store: classpath:localhost-keystore.jks
+    key-store-password: keystorep
+    key-alias: localhost
+    key-store-type: jks
+    enabled: true
